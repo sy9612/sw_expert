@@ -15,9 +15,6 @@ class Solution {
             int H = K;
             int cnt = 0;
  
-            //StringBuilder sb = new StringBuilder();
-            //sb.append("#").append(" ").append(test_case).append(" ");
- 
             System.out.print("#" + test_case + " ");
             for (int i = 1; i <= N -1; i++) {
                 arr[i] = sc.nextInt();
@@ -33,7 +30,6 @@ class Solution {
                     int cur = q.peek();
                     cnt++;
                     q.poll();
-                    //sb.append(arr[cur]).append(" ");
                     System.out.print(arr[cur] + " ");
                     int left = cur - (int) Math.pow(2, H-2);//왼쪽 자식
                     int right = 2 * cur - left;//오른쪽 자식
@@ -43,7 +39,6 @@ class Solution {
                 System.out.println();
                 H--;
             }
-            //System.out.print(sb);
              
         }
     }
