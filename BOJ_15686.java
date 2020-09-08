@@ -10,7 +10,6 @@ public class BOJ_15686 {
 	static boolean visit[];
 	static ArrayList<Point> house = new ArrayList();
 	static ArrayList<Point> chicken = new ArrayList();
-	// static ArrayList<Point> result = new ArrayList();
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
