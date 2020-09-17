@@ -5,7 +5,7 @@ import java.util.*;
 public class BOJ_19236 {
 	public static class Shark {
 		int dir;
-		int x;
+		int x; 
 		int y;
 		int ate;
 
