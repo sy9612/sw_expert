@@ -1,7 +1,7 @@
 import java.awt.Point;
 import java.io.*;
 import java.util.*;
-
+ 
 public class BOJ_19236 {
 	public static class Shark {
 		int dir;
