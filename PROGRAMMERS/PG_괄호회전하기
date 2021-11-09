@@ -1,0 +1,55 @@
+import java.util.*;
+
+class Solution {
+    public static int solution(String s) {
+        int answer = s.length();
+        for(int j=0; j<s.length(); j++){
+            boolean flag = false;
+            Stack <Character> stack = new Stack();
+
+            for(int k=j; k<s.length() + j; k++){
+            	int i = k % s.length();
+
+                    if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{')
+                        stack.add(s.charAt(i));
+                    else{
+                    	if(stack.isEmpty()) {
+                    		flag = true;
+                    		break;
+                    	}
+                    		
+                        char top = stack.pop();
+
+                        if(top == '('){
+                            if(s.charAt(i) == ')')
+                                continue;
+                            else{
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if(top == '['){
+                            if(s.charAt(i) == ']')
+                                continue;
+                            else{
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if(top == '{'){
+                            if(s.charAt(i) == '}')
+                                continue;
+                            else{
+                                flag = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(flag || !stack.isEmpty())
+                    answer--;
+            }
+        
+        return answer;
+    }
+}
