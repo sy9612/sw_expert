@@ -1,0 +1,57 @@
+import java.util.*;
+import java.io.*;
+
+class Solution {
+    public String[] solution(String[] s) {
+        String[] answer = new String[s.length];
+        for(int i=0; i<s.length; i++){
+            answer[i] = Solve(s[i]);
+        }
+        return answer;
+    }//solution
+    public static String Solve(String str){
+        char answer[] = new char[str.length()];
+        char temp[] = new char[str.length()];
+        int idx = -1, cnt = 0;
+        int i=0, j=0;
+        for(i=0, j=0; i<str.length(); i++){
+            if(str.charAt(i) == '0'){
+                //앞에 110 만족
+                if(j-2 >= 0){
+                    if(answer[j-2] == '1' && answer[j-1] == '1'){
+                        cnt++;
+                        j -= 2;
+                        continue;
+                    }else{
+                        idx = j;
+                    }
+                }
+                //불만족
+                else{
+                    idx = j;
+                }
+            }
+            answer[j++] = str.charAt(i);
+        }
+
+        char real_answer[] = new char[str.length()];
+
+        for(i=0, j=0; i<=idx; i++, j++){
+            real_answer[i] = answer[j];
+        }
+
+        for(int k=0; k<cnt; k++){
+            real_answer[i++] = '1';
+            real_answer[i++] = '1';
+            real_answer[i++] = '0';
+        }
+        
+        while(i < str.length()){
+            real_answer[i++] = answer[j++];
+        }
+        
+        String val = String.valueOf(real_answer);
+        //System.out.println(String.valueOf(real_answer));
+        return val;
+    }//Solve
+}
