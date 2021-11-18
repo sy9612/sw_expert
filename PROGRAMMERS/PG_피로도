@@ -1,0 +1,37 @@
+class Solution {
+    static int answer = -1;
+    public int solution(int k, int[][] dungeons) {
+        Solve(0, new boolean[dungeons.length], new int[dungeons.length], k, dungeons);
+        return answer;
+    }
+    
+    public static void Solve(int cnt, boolean [] visit, int [] arr, int k, int [][] dungeons){
+        if(cnt == dungeons.length){
+            int piro = k;
+            int ans = 0;
+            for(int i=0; i<dungeons.length; i++){
+                int cur = arr[i];
+                if(piro >= dungeons[cur][0]){
+                    piro -= dungeons[cur][1];
+                    ans++;
+                }else
+                    break;
+            }
+            
+            answer = Math.max(answer, ans);
+            
+            return;
+        }
+        
+        
+        for(int i=0; i<dungeons.length; i++){
+            if(!visit[i]){
+                visit[i] = true;
+                arr[cnt] = i;
+                Solve(cnt+1, visit, arr, k, dungeons);  
+                visit[i] = false;
+            }
+        }
+        
+    }//Solve
+}
